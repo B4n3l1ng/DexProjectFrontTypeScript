@@ -15,7 +15,6 @@ const Pokedex = () => {
       const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/pokemon`);
       if (response.status === 200 || response.status === 304) {
         const ordered = response.data.toSorted((a: PokemonProperties, b: PokemonProperties) => a.dexNumber - b.dexNumber);
-        console.log(ordered);
         setAllPokemon(ordered);
       }
     } catch (error) {

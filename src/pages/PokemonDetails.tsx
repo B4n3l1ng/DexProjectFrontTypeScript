@@ -3,6 +3,9 @@ import PokemonProperties from '../interfaces';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Loader } from '@mantine/core';
+import ImageCarousel from '../components/ImageCarousel';
+import { setTypeColor } from '../utils';
+import TypeAndAbility from '../components/TypeAndAbility';
 
 const PokemonDetails = () => {
   const [data, setData] = useState<PokemonProperties>();
@@ -23,7 +26,22 @@ const PokemonDetails = () => {
     fetchPokemon();
   }, [pokemonId]);
 
-  return <>{data ? <div>{data.name}</div> : <Loader color="teal" size="lg" type="dots" />}</>;
+  return (
+    <section className="detailsPage">
+      {data ? (
+        <div>
+          <h1>Pokemon Details</h1>
+          <h2 className="pkmName" style={{ color: setTypeColor(data.type[0]) }}>
+            {data.name}
+          </h2>
+          <ImageCarousel {...data} />
+          <TypeAndAbility {...data} />
+        </div>
+      ) : (
+        <Loader color="teal" size="lg" type="dots" />
+      )}
+    </section>
+  );
 };
 
 export default PokemonDetails;
