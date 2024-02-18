@@ -5,7 +5,7 @@ interface props {
   type: string;
 }
 
-const PokemonCard = ({ data, type }: props) => {
+const Card = ({ data, type }: props) => {
   return (
     <Link to={`/${type}/${data._id}`} className="dataCard">
       <p>{data.name}</p>
@@ -15,4 +15,4 @@ const PokemonCard = ({ data, type }: props) => {
   );
 };
 
-export default PokemonCard;
+export default Card;

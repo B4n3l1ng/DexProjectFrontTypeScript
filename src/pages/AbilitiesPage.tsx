@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { Loader } from '@mantine/core';
-import PokemonCard from '../components/PokemonCard';
+import Card from '../components/Card';
 import { AbilityProperties } from '../interfaces';
 
 const AbilitiesPage = () => {
@@ -32,7 +32,7 @@ const AbilitiesPage = () => {
       ) : (
         <div className="list">
           {data!.map((ability) => (
-            <PokemonCard data={ability} type="ability" key={ability._id} />
+            <Card data={ability} type="ability" key={ability._id} />
           ))}
         </div>
       )}
