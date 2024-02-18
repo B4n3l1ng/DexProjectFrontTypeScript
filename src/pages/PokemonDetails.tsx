@@ -12,7 +12,7 @@ const PokemonDetails = () => {
     try {
       const response = await axios(`${import.meta.env.VITE_API_URL}/api/pokemon/${pokemonId}`);
       if (response.status === 200 || response.status == 304) {
-        setData(response.data);
+        setData(response.data.pokemon);
       }
     } catch (error) {
       console.log(error);
