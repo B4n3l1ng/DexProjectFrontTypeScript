@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Pagination, Loader } from '@mantine/core';
-import PokemonProperties from '../interfaces/index';
-import PokemonCard from '../components/PokemonCard';
+import { PokemonProperties } from '../interfaces/index';
+import Card from '../components/Card';
 
 const Pokedex = () => {
   const [allPokemon, setAllPokemon] = useState<PokemonProperties[]>([]);
@@ -15,7 +15,6 @@ const Pokedex = () => {
       const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/pokemon`);
       if (response.status === 200 || response.status === 304) {
         const ordered = response.data.toSorted((a: PokemonProperties, b: PokemonProperties) => a.dexNumber - b.dexNumber);
-        console.log(ordered);
         setAllPokemon(ordered);
       }
     } catch (error) {
@@ -56,9 +55,9 @@ const Pokedex = () => {
             color="teal"
             className="pagination"
           />
-          <div className="pokemonList">
+          <div className="list">
             {display.map((pokemon) => (
-              <PokemonCard pokemon={pokemon} key={pokemon._id} />
+              <Card data={pokemon} type="pokemon" key={pokemon._id} />
             ))}
           </div>
           <Pagination
