@@ -1,10 +1,9 @@
-import PokemonProperties from '../interfaces';
-import { Center, Divider } from '@mantine/core';
-import { setTypeColor } from '../utils';
+import { PokemonProperties } from '../interfaces';
+import { Center } from '@mantine/core';
+import { capitalize, setTypeColor } from '../utils';
 import { Link } from 'react-router-dom';
 
 const TypeAndAbility = ({ type, abilities, hiddenAbility }: PokemonProperties) => {
-  console.log('hidden', hiddenAbility);
   return (
     <section>
       <Center>
@@ -19,7 +18,7 @@ const TypeAndAbility = ({ type, abilities, hiddenAbility }: PokemonProperties) =
                   backgroundColor: `${setTypeColor(type)}`,
                 }}
               >
-                {type}
+                {capitalize(type)}
               </div>
             ))}
           </div>

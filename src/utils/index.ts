@@ -27,4 +27,8 @@ function setTypeColor(type: string): string {
   return colours[type] || '#777';
 }
 
-export { setTypeColor, colours };
+function capitalize(string: string): string {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+export { setTypeColor, colours, capitalize };

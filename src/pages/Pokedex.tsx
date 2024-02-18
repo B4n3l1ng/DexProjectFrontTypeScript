@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Pagination, Loader } from '@mantine/core';
-import PokemonProperties from '../interfaces/index';
+import { PokemonProperties } from '../interfaces/index';
 import PokemonCard from '../components/PokemonCard';
 
 const Pokedex = () => {
@@ -55,9 +55,9 @@ const Pokedex = () => {
             color="teal"
             className="pagination"
           />
-          <div className="pokemonList">
+          <div className="list">
             {display.map((pokemon) => (
-              <PokemonCard pokemon={pokemon} key={pokemon._id} />
+              <PokemonCard data={pokemon} type="pokemon" key={pokemon._id} />
             ))}
           </div>
           <Pagination
