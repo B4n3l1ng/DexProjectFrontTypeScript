@@ -6,6 +6,7 @@ import { Loader } from '@mantine/core';
 import ImageCarousel from '../components/ImageCarousel';
 import { setTypeColor } from '../utils';
 import TypeAndAbility from '../components/TypeAndAbility';
+import BaseStats from '../components/BaseStats';
 import PokemonNavButton from '../components/PokemonNavButton';
 import Tabs from '../components/Tabs';
 
@@ -53,7 +54,10 @@ const PokemonDetails = () => {
           <ImageCarousel {...data} />
           <TypeAndAbility {...data} />
           {/* Saving space for stats */}
+
+          <BaseStats {...data} />
           <Tabs levelingMoves={data.levelUpMoves} eggMoves={data.eggMoves} machineMoves={data.machineMoves} tutorMoves={data.tutorMoves} />
+
           <div className="navButtonSection">
             <PokemonNavButton id={previous} text={'Previous Pokemon'} />
             <PokemonNavButton id={next} text={'Next Pokemon'} />

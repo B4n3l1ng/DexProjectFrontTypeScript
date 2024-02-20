@@ -27,8 +27,39 @@ function setTypeColor(type: string): string {
   return colours[type] || '#777';
 }
 
+const calculateBarWidth = (statValue: number) => {
+  const maxWidth = 100;
+  return (statValue / 255) * maxWidth;
+};
+
+function getStatColor(name: string) {
+  let color;
+  switch (name) {
+    case 'hp':
+      color = 'red';
+      break;
+    case 'atk':
+      color = 'orange';
+      break;
+    case 'def':
+      color = 'yellow';
+      break;
+    case 'sp_atk':
+      color = 'blue';
+      break;
+    case 'sp_def':
+      color = 'green';
+      break;
+    case 'speed':
+      color = 'pink';
+      break;
+    default:
+      color = '#fff';
+  }
+  return color;
+}
+
+export { setTypeColor, colours, capitalize, calculateBarWidth, getStatColor };
 function capitalize(string: string): string {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
-
-export { setTypeColor, colours, capitalize };
