@@ -7,6 +7,7 @@ import ImageCarousel from '../components/ImageCarousel';
 import { setTypeColor } from '../utils';
 import TypeAndAbility from '../components/TypeAndAbility';
 import PokemonNavButton from '../components/PokemonNavButton';
+import Tabs from '../components/Tabs';
 
 const PokemonDetails = () => {
   const [data, setData] = useState<PokemonProperties>();
@@ -14,21 +15,19 @@ const PokemonDetails = () => {
   const [previous, setPrevious] = useState<string>('');
   const [next, setNext] = useState<string>('');
 
-  const fetchPokemon = async () => {
-    try {
-      const response = await axios(`${import.meta.env.VITE_API_URL}/api/pokemon/${pokemonId}`);
-      if (response.status === 200 || response.status == 304) {
-        console.log(response.data);
-        setData(response.data.pokemon);
-        setNext(response.data.next);
-        setPrevious(response.data.previous);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   useEffect(() => {
+    const fetchPokemon = async () => {
+      try {
+        const response = await axios(`${import.meta.env.VITE_API_URL}/api/pokemon/${pokemonId}`);
+        if (response.status === 200 || response.status == 304) {
+          setData(response.data.pokemon);
+          setNext(response.data.next);
+          setPrevious(response.data.previous);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
     fetchPokemon();
   }, [pokemonId]);
 
@@ -48,13 +47,13 @@ const PokemonDetails = () => {
             {previous ? <PokemonNavButton id={previous} text={'Previous Pokemon'} /> : null}
             {next ? <PokemonNavButton id={next} text={'Next Pokemon'} /> : null}
           </div>
-
           <h2 className="pkmName" style={{ color: setTypeColor(data.type[0]) }}>
             {data.name}
           </h2>
           <ImageCarousel {...data} />
           <TypeAndAbility {...data} />
-
+          {/* Saving space for stats */}
+          <Tabs levelingMoves={data.levelUpMoves} eggMoves={data.eggMoves} machineMoves={data.machineMoves} tutorMoves={data.tutorMoves} />
           <div className="navButtonSection">
             <PokemonNavButton id={previous} text={'Previous Pokemon'} />
             <PokemonNavButton id={next} text={'Next Pokemon'} />

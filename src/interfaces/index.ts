@@ -22,38 +22,15 @@ interface PokemonProperties {
     description: string;
     _id: string;
   };
-  levelUpMoves: {
-    name: string;
-    description: string;
-    typing: string;
-    type: string;
-    power?: number;
-    accuracy?: number;
-  };
-  machineMoves: {
-    name: string;
-    description: string;
-    typing: string;
-    type: string;
-    power?: number;
-    accuracy?: number;
-  };
-  tutorMoves: {
-    name: string;
-    description: string;
-    typing: string;
-    type: string;
-    power?: number;
-    accuracy?: number;
-  };
-  eggMoves: {
-    name: string;
-    description: string;
-    typing: string;
-    type: string;
-    power?: number;
-    accuracy?: number;
-  };
+  levelUpMoves: [
+    {
+      _id: MoveProperties;
+      level: number;
+    }
+  ];
+  machineMoves: [MoveProperties];
+  tutorMoves: [MoveProperties];
+  eggMoves: [MoveProperties];
   thumbnail: string;
   shinyThumbnail?: string;
   dexEntry: string;
@@ -66,5 +43,14 @@ interface AbilityProperties {
   description: string;
   _id: string;
 }
+interface MoveProperties {
+  name: string;
+  description: string;
+  typing: string;
+  type: string;
+  power?: number;
+  accuracy?: number;
+  _id: string;
+}
 
-export type { PokemonProperties, AbilityProperties };
+export type { PokemonProperties, AbilityProperties, MoveProperties };
