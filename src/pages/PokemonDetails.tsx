@@ -6,6 +6,7 @@ import { Loader } from '@mantine/core';
 import ImageCarousel from '../components/ImageCarousel';
 import { setTypeColor } from '../utils';
 import TypeAndAbility from '../components/TypeAndAbility';
+import BaseStats from '../components/BaseStats';
 
 const PokemonDetails = () => {
   const [data, setData] = useState<PokemonProperties>();
@@ -36,6 +37,7 @@ const PokemonDetails = () => {
           </h2>
           <ImageCarousel {...data} />
           <TypeAndAbility {...data} />
+          <BaseStats {...data} />
         </div>
       ) : (
         <Loader color="teal" size="lg" type="dots" />
