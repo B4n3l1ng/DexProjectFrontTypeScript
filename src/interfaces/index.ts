@@ -61,4 +61,10 @@ interface PokemonProperties {
   _id: string;
 }
 
-export default PokemonProperties;
+interface AbilityProperties {
+  name: string;
+  description: string;
+  _id: string;
+}
+
+export type { PokemonProperties, AbilityProperties };

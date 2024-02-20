@@ -59,4 +59,7 @@ function getStatColor(name: string) {
   return color;
 }
 
-export { setTypeColor, colours, calculateBarWidth, getStatColor };
+export { setTypeColor, colours, capitalize, calculateBarWidth, getStatColor };
+function capitalize(string: string): string {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}

@@ -12,6 +12,9 @@ const Navbar = () => {
         <li>
           <Link to="/pokedex">Dex Page</Link>
         </li>
+        <li>
+          <Link to="/abilities">Abilities Page</Link>
+        </li>
       </ul>
     </nav>
   );
