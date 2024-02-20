@@ -73,8 +73,8 @@ const MovesTable = ({ array = [], arrayWithLevel = [], hasLevel = false }: props
                     />
                   </Table.Td>
                   <Table.Td>
-                    <Button color="#008080">
-                      <Link to={`/moves/${move._id}`}>More Info</Link>
+                    <Button color="#008080" component={Link} to={`/moves/${move._id}`}>
+                      More Info
                     </Button>
                   </Table.Td>
                 </Table.Tr>
@@ -100,8 +100,8 @@ const MovesTable = ({ array = [], arrayWithLevel = [], hasLevel = false }: props
                     />
                   </Table.Td>
                   <Table.Td>
-                    <Button color="#008080">
-                      <Link to={`/moves/${move._id._id}`}>More Info</Link>
+                    <Button color="#008080" component={Link} to={`/moves/${move._id._id}`}>
+                      More Info
                     </Button>
                   </Table.Td>
                 </Table.Tr>

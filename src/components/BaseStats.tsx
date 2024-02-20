@@ -1,11 +1,7 @@
-import PokemonProperties from '../interfaces';
-import { useEffect } from 'react';
+import { PokemonProperties } from '../interfaces';
 import { calculateBarWidth, getStatColor } from '../utils';
 
 const BaseStats = ({ baseStats }: PokemonProperties) => {
-  useEffect(() => {
-    console.log(baseStats);
-  }, [baseStats]);
   return (
     <section className="pokemon-stats boxWithRadius">
       <div className="stat-bar">

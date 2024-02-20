@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { MoveProperties } from '../interfaces';
 import MovesTable from './MovesTable';
+import { useLocation } from 'react-router-dom';
 
 interface props {
   levelingMoves: [{ _id: MoveProperties; level: number }];
@@ -11,6 +12,11 @@ interface props {
 
 const Tabs = ({ levelingMoves, tutorMoves, machineMoves, eggMoves }: props) => {
   const [activeTab, setActiveTab] = useState('leveling');
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    setActiveTab('leveling');
+  }, [pathname]);
   return (
     <div className="Tabs">
       <ul className="nav">

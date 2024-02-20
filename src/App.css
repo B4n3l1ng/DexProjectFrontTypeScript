@@ -244,6 +244,7 @@ a.dataCard {
   justify-content: flex-start;
   align-items: center;
   gap: 1em;
+  min-height: 20vh;
   width: 50%;
   padding: 1em;
   margin-top: 1em;
@@ -268,6 +269,7 @@ a.dataCard {
   justify-content: flex-start;
   align-items: center;
   gap: 1.7em;
+  min-height: 20vh;
   width: 50%;
   padding: 1em;
   margin-top: 1em;
@@ -301,7 +303,7 @@ a.dataCard {
 .pokemon-stats {
   display: flex;
   flex-direction: column;
-  width: 80%;
+  width: 50%;
   margin: 1em auto;
   padding: 1em;
 }
@@ -358,7 +360,7 @@ a.dataCard {
 }
 
 .Tabs {
-  width: 60%;
+  width: 50%;
   height: auto;
   min-height: 400px;
   background: #053742;
