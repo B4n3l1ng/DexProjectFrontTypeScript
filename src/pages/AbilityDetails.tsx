@@ -42,23 +42,23 @@ const AbilityDetails = () => {
 
   return (
     <section>
-      <Center>
-        {ability && pokemon ? (
-          <div className={dexStyles.dexPage}>
-            <h1>{ability.name}</h1>
-            <div className={detailStyles.box}>
-              <p>Description: {ability.description}</p>
-            </div>
-            <div className={dexStyles.list}>
-              {pokemon!.map((pokemon) => (
-                <Card data={pokemon} type={'pokemon'} key={pokemon._id} />
-              ))}
-            </div>
+      <h1>Ability Details</h1>
+
+      {ability && pokemon ? (
+        <div className={dexStyles.dexPage}>
+          <h2 className={detailStyles.name}>{ability.name}</h2>
+          <div className={detailStyles.box}>
+            <p>Description: {ability.description}</p>
           </div>
-        ) : (
-          <Loader color="teal" size="lg" type="dots" />
-        )}
-      </Center>
+          <div className={dexStyles.list}>
+            {pokemon!.map((pokemon) => (
+              <Card data={pokemon} type={'pokemon'} key={pokemon._id} />
+            ))}
+          </div>
+        </div>
+      ) : (
+        <Loader color="teal" size="lg" type="dots" style={{ margin: '0 auto' }} />
+      )}
     </section>
   );
 };

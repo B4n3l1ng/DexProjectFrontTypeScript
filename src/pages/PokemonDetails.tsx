@@ -35,9 +35,11 @@ const PokemonDetails = () => {
 
   return (
     <section className={dexDetailsStyles.detailsPage}>
-      {data ? (
+      <h1>Pokemon Details</h1>
+      {!data ? (
+        <Loader color="teal" size="lg" type="dots" style={{ margin: '0 auto' }} />
+      ) : (
         <div>
-          <h1>Pokemon Details</h1>
           <div className={dexDetailsStyles.navButtonSection}>
             {previous ? <PokemonNavButton id={previous} text={'Previous Pokemon'} /> : null}
             {next ? <PokemonNavButton id={next} text={'Next Pokemon'} /> : null}
@@ -56,8 +58,6 @@ const PokemonDetails = () => {
             <PokemonNavButton id={next} text={'Next Pokemon'} />
           </div>
         </div>
-      ) : (
-        <Loader color="teal" size="lg" type="dots" />
       )}
     </section>
   );

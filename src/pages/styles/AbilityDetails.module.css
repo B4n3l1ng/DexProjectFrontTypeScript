@@ -6,6 +6,19 @@
   padding: 3rem;
 }
 
-section div > * {
-  gap: 3em;
+section {
+  text-align: center;
+}
+
+h2 {
+  margin: 1em;
+}
+
+div div {
+  margin-bottom: 2em;
+}
+
+.name {
+  font-weight: 600;
+  font-size: xx-large;
 }
