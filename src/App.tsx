@@ -8,6 +8,7 @@ import Pokedex from './pages/Pokedex';
 import PokemonDetails from './pages/PokemonDetails';
 import AbilitiesPage from './pages/AbilitiesPage';
 import ScrollToTop from './components/ScrollToTop';
+import AbilityDetails from './pages/AbilityDetails';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/pokedex" element={<Pokedex />} />
         <Route path="/pokemon/:pokemonId" element={<PokemonDetails />} />
         <Route path="/abilities" element={<AbilitiesPage />} />
+        <Route path="/ability/:abilityId" element={<AbilityDetails />} />
       </Routes>
     </>
   );
