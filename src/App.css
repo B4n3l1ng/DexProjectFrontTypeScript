@@ -120,3 +120,7 @@ button a {
   text-decoration: none;
   color: aliceblue;
 }
+
+.loader {
+  margin: 0 auto;
+}

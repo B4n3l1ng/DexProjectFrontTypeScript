@@ -40,7 +40,7 @@ const Pokedex = () => {
     <section className={dexStyles.dexPage}>
       <h1>List of all Pokémon</h1>
       {isLoading ? (
-        <Loader color="teal" size="lg" type="dots" />
+        <Loader color="teal" size="lg" type="dots" className="loader" />
       ) : (
         <>
           <Pagination

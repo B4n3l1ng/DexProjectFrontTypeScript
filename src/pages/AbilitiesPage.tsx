@@ -29,7 +29,7 @@ const AbilitiesPage = () => {
     <section className={abilitiesPageStyles.abilitiesPage}>
       <h1>All Abilities</h1>
       {isLoading ? (
-        <Loader color="teal" size="lg" type="dots" />
+        <Loader color="teal" size="lg" type="dots" className="loader" />
       ) : (
         <div className={abilitiesPageStyles.list}>
           {data!.map((ability) => (

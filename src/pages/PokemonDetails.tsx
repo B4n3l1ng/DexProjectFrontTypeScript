@@ -37,7 +37,7 @@ const PokemonDetails = () => {
     <section className={dexDetailsStyles.detailsPage}>
       <h1>Pokemon Details</h1>
       {!data ? (
-        <Loader color="teal" size="lg" type="dots" style={{ margin: '0 auto' }} />
+        <Loader color="teal" size="lg" type="dots" className="loader" />
       ) : (
         <div>
           <div className={dexDetailsStyles.navButtonSection}>

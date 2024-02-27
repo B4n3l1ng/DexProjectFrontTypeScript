@@ -56,7 +56,7 @@ const AbilityDetails = () => {
           </div>
         </div>
       ) : (
-        <Loader color="teal" size="lg" type="dots" style={{ margin: '0 auto' }} />
+        <Loader color="teal" size="lg" type="dots" className="loader" />
       )}
     </section>
   );

@@ -1,24 +1,17 @@
 .box {
-  background-color: #008080; /* 
-  border-radius: 2rem; */
+  background-color: #008080;
   color: white;
   width: 58%;
   padding: 3rem;
+  margin-bottom: 2em;
 }
 
 section {
   text-align: center;
 }
 
-h2 {
-  margin: 1em;
-}
-
-div div {
-  margin-bottom: 2em;
-}
-
 .name {
   font-weight: 600;
   font-size: xx-large;
+  margin: 1em;
 }
