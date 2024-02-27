@@ -2,18 +2,19 @@ import { PokemonProperties } from '../interfaces';
 import { Center } from '@mantine/core';
 import { capitalize, setTypeColor } from '../utils';
 import { Link } from 'react-router-dom';
+import typeAbilityStyles from './styles/TypeAndAbility.module.css';
 
 const TypeAndAbility = ({ type, abilities, hiddenAbility }: PokemonProperties) => {
   return (
     <section>
       <Center>
-        <div className="typesAndAbility">
-          <div className="typesBox boxWithRadius">
+        <div className={typeAbilityStyles.typesAndAbility}>
+          <div className={`${typeAbilityStyles.typesBox} boxWithRadius`}>
             <div className="drkBlueBox">Typing</div>
             {type.map((type) => (
               <div
                 key={type}
-                className="type"
+                className={typeAbilityStyles.type}
                 style={{
                   backgroundColor: `${setTypeColor(type)}`,
                 }}
@@ -22,9 +23,9 @@ const TypeAndAbility = ({ type, abilities, hiddenAbility }: PokemonProperties) =
               </div>
             ))}
           </div>
-          <div className="abilitiesBox boxWithRadius">
+          <div className={`${typeAbilityStyles.abilitiesBox} boxWithRadius`}>
             <div className="drkBlueBox">Abilities</div>
-            <div className="abilitiesTxt">
+            <div className={typeAbilityStyles.abilitiesTxt}>
               {abilities.map((ability) => {
                 return (
                   <Link to={`/ability/${ability._id}`} key={ability._id} className="whiteText">

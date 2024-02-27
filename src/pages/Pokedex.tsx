@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Pagination, Loader } from '@mantine/core';
 import { PokemonProperties } from '../interfaces/index';
 import Card from '../components/Card';
+import dexStyles from './styles/Pokedex.module.css';
 
 const Pokedex = () => {
   const [allPokemon, setAllPokemon] = useState<PokemonProperties[]>([]);
@@ -36,7 +37,7 @@ const Pokedex = () => {
   }, [activePage, allPokemon]);
 
   return (
-    <section className="dexPage">
+    <section className={dexStyles.dexPage}>
       <h1>List of all Pokémon</h1>
       {isLoading ? (
         <Loader color="teal" size="lg" type="dots" />
@@ -53,9 +54,9 @@ const Pokedex = () => {
             size="lg"
             radius="lg"
             color="teal"
-            className="pagination"
+            className={dexStyles.pagination}
           />
-          <div className="list">
+          <div className={dexStyles.list}>
             {display.map((pokemon) => (
               <Card data={pokemon} type="pokemon" key={pokemon._id} />
             ))}
@@ -71,7 +72,7 @@ const Pokedex = () => {
             color="teal"
             size="lg"
             radius="lg"
-            className="pagination"
+            className={dexStyles.pagination}
           />
         </>
       )}

@@ -9,6 +9,7 @@ import TypeAndAbility from '../components/TypeAndAbility';
 import BaseStats from '../components/BaseStats';
 import PokemonNavButton from '../components/PokemonNavButton';
 import Tabs from '../components/Tabs';
+import dexDetailsStyles from './styles/PokemonDetails.module.css';
 
 const PokemonDetails = () => {
   const [data, setData] = useState<PokemonProperties>();
@@ -32,33 +33,25 @@ const PokemonDetails = () => {
     fetchPokemon();
   }, [pokemonId]);
 
-  /*  useEffect(() => {
-    if (data) {
-      console.log(data);
-      console.log('next:', next, 'previous:', previous);
-    }
-  }, [data]); */
-
   return (
-    <section className="detailsPage">
+    <section className={dexDetailsStyles.detailsPage}>
       {data ? (
         <div>
           <h1>Pokemon Details</h1>
-          <div className="navButtonSection">
+          <div className={dexDetailsStyles.navButtonSection}>
             {previous ? <PokemonNavButton id={previous} text={'Previous Pokemon'} /> : null}
             {next ? <PokemonNavButton id={next} text={'Next Pokemon'} /> : null}
           </div>
-          <h2 className="pkmName" style={{ color: setTypeColor(data.type[0]) }}>
+          <h2 className={dexDetailsStyles.pkmName} style={{ color: setTypeColor(data.type[0]) }}>
             {data.name}
           </h2>
           <ImageCarousel {...data} />
           <TypeAndAbility {...data} />
-          {/* Saving space for stats */}
 
           <BaseStats {...data} />
           <Tabs levelingMoves={data.levelUpMoves} eggMoves={data.eggMoves} machineMoves={data.machineMoves} tutorMoves={data.tutorMoves} />
 
-          <div className="navButtonSection">
+          <div className={dexDetailsStyles.navButtonSection}>
             <PokemonNavButton id={previous} text={'Previous Pokemon'} />
             <PokemonNavButton id={next} text={'Next Pokemon'} />
           </div>

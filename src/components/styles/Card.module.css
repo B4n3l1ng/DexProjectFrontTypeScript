@@ -1,0 +1,29 @@
+.dataCard {
+  border: 1px solid teal;
+  background-color: teal;
+  width: 30%;
+  margin: 1% 0;
+  color: aliceblue;
+}
+
+.dataCard img {
+  width: 50%;
+}
+
+a.dataCard {
+  text-decoration: none;
+}
+
+@media only screen and (max-width: 767px) {
+  .dataCard {
+    width: 45%;
+
+    min-width: 150px;
+  }
+}
+
+@media only screen and (max-width: 424px) {
+  .dataCard img {
+    display: none;
+  }
+}

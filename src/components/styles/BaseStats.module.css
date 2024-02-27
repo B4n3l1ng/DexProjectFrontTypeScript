@@ -1,0 +1,36 @@
+.pokemon-stats {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 1em auto;
+  padding: 1em;
+}
+
+.stat-bar {
+  margin-bottom: 10px;
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 1em;
+}
+
+.stat-name {
+  width: 30%;
+}
+
+.bar-container {
+  background-color: #eee;
+  height: 20px;
+  border-radius: 5px;
+  overflow: hidden;
+  width: 70%;
+}
+
+.bar {
+  height: 100%;
+  color: black;
+  text-align: center;
+}

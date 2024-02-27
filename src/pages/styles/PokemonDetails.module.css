@@ -1,0 +1,16 @@
+.detailsPage {
+  text-align: center;
+}
+
+.navButtonSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  margin: 1em;
+}
+
+.pkmName {
+  font-weight: 600;
+  font-size: xx-large;
+}

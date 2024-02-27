@@ -1,0 +1,30 @@
+.caroussel {
+  background-color: teal;
+  width: 50%;
+  border-radius: 2rem;
+}
+.pkmImgBox {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2em;
+}
+.pkmImgBox div {
+  text-align: center;
+  padding: 1em;
+  width: 100%;
+  border: 2px solid #39a2db;
+  border-radius: 2rem;
+  background-color: #053742;
+  color: #fa5252;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+.caroussel img {
+  width: 50%;
+}
+.pkmImg {
+  width: 50%;
+}

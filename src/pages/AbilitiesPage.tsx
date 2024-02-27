@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { Loader } from '@mantine/core';
 import Card from '../components/Card';
 import { AbilityProperties } from '../interfaces';
+import abilitiesPageStyles from './styles/AbilitiesPage.module.css';
 
 const AbilitiesPage = () => {
   const [data, setData] = useState<AbilityProperties[]>([]);
@@ -25,12 +26,12 @@ const AbilitiesPage = () => {
   }, []);
 
   return (
-    <section className="abilitiesPage">
+    <section className={abilitiesPageStyles.abilitiesPage}>
       <h1>All Abilities</h1>
       {isLoading ? (
         <Loader color="teal" size="lg" type="dots" />
       ) : (
-        <div className="list">
+        <div className={abilitiesPageStyles.list}>
           {data!.map((ability) => (
             <Card data={ability} type="ability" key={ability._id} />
           ))}

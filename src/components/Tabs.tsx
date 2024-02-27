@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { MoveProperties } from '../interfaces';
 import MovesTable from './MovesTable';
 import { useLocation } from 'react-router-dom';
+import tabStyles from './styles/Tabs.module.css';
 
 interface props {
   levelingMoves: [{ _id: MoveProperties; level: number }];
@@ -18,36 +19,36 @@ const Tabs = ({ levelingMoves, tutorMoves, machineMoves, eggMoves }: props) => {
     setActiveTab('leveling');
   }, [pathname]);
   return (
-    <div className="Tabs">
-      <ul className="nav">
-        <li className={activeTab === 'leveling' ? 'active' : ''} onClick={() => setActiveTab('leveling')}>
+    <div className={tabStyles.Tabs}>
+      <ul className={tabStyles.nav}>
+        <li className={activeTab === 'leveling' ? tabStyles.active : ''} onClick={() => setActiveTab('leveling')}>
           Level Up Moves
         </li>
-        <li className={activeTab === 'tutor' ? 'active' : ''} onClick={() => setActiveTab('tutor')}>
+        <li className={activeTab === 'tutor' ? tabStyles.active : ''} onClick={() => setActiveTab('tutor')}>
           Tutor Moves
         </li>
-        <li className={activeTab === 'machine' ? 'active' : ''} onClick={() => setActiveTab('machine')}>
+        <li className={activeTab === 'machine' ? tabStyles.active : ''} onClick={() => setActiveTab('machine')}>
           TM/TR Moves
         </li>
-        <li className={activeTab === 'egg' ? 'active' : ''} onClick={() => setActiveTab('egg')}>
+        <li className={activeTab === 'egg' ? tabStyles.active : ''} onClick={() => setActiveTab('egg')}>
           Egg Moves
         </li>
       </ul>
       <div className="outlet">
         {activeTab === 'leveling' ? (
-          <div className="levelUpMoves">
+          <div>
             <MovesTable arrayWithLevel={levelingMoves} hasLevel={true} />
           </div>
         ) : activeTab === 'tutor' ? (
-          <div className="tutorMoves">
+          <div>
             <MovesTable array={tutorMoves} />
           </div>
         ) : activeTab === 'machine' ? (
-          <div className="machineMoves">
+          <div>
             <MovesTable array={machineMoves} />
           </div>
         ) : activeTab === 'egg' ? (
-          <div className="eggMoves">
+          <div>
             <MovesTable array={eggMoves} />
           </div>
         ) : undefined}

@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
+import homeStyles from './styles/Homepage.module.css';
 
 const Homepage = () => {
   return (
-    <section className="homePage">
+    <section className={homeStyles.homePage}>
       <div>
         <h1>Welcome to our PokeDèx website!</h1>
         <h2>Here you can learn about all things competitive Pokémon, from Pokémon moves, to their abilities and items.</h2>

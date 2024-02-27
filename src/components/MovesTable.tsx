@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import physical from '../assets/physical move icon.png';
 import special from '../assets/special move icon.png';
 import status from '../assets/status move icon.png';
+import movesTableStyles from './styles/MovesTable.module.css';
 
 interface props {
   array?: MoveProperties[];
@@ -28,7 +29,7 @@ const MovesTable = ({ array = [], arrayWithLevel = [], hasLevel = false }: props
     return <Text>No move information available at this time</Text>;
   }
   return (
-    <Table striped withTableBorder className="table">
+    <Table striped withTableBorder>
       <Table.Thead>
         <Table.Tr>
           {hasLevel ? (
@@ -69,7 +70,7 @@ const MovesTable = ({ array = [], arrayWithLevel = [], hasLevel = false }: props
                     <img
                       src={move.type === 'Special' ? special : move.type === 'Physical' ? physical : move.type === 'Status' ? status : ''}
                       alt="Move group icon"
-                      className="moveIcon"
+                      className={movesTableStyles.moveIcon}
                     />
                   </Table.Td>
                   <Table.Td>
@@ -96,7 +97,7 @@ const MovesTable = ({ array = [], arrayWithLevel = [], hasLevel = false }: props
                     <img
                       src={move._id.type === 'Special' ? special : move._id.type === 'Physical' ? physical : move._id.type === 'Status' ? status : ''}
                       alt="Move group icon"
-                      className="moveIcon"
+                      className={movesTableStyles.moveIcon}
                     />
                   </Table.Td>
                   <Table.Td>

@@ -3,6 +3,7 @@ import { PokemonProperties } from '../interfaces';
 import { Center } from '@mantine/core';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import carouselStyles from './styles/Carousel.module.css';
 
 const ImageCarousel = ({ thumbnail, shinyThumbnail }: PokemonProperties) => {
   const [initialSlide, setInitialSlide] = useState(0);
@@ -14,14 +15,14 @@ const ImageCarousel = ({ thumbnail, shinyThumbnail }: PokemonProperties) => {
   console.log(initialSlide);
   return (
     <Center>
-      <Carousel loop className="caroussel" initialSlide={initialSlide}>
-        <Carousel.Slide className="pkmImgBox">
-          <img src={thumbnail} className="pkmImg" />
+      <Carousel loop className={carouselStyles.caroussel} initialSlide={initialSlide}>
+        <Carousel.Slide className={carouselStyles.pkmImgBox}>
+          <img src={thumbnail} className={carouselStyles.pkmImg} />
           <div>Regular</div>
         </Carousel.Slide>
         {shinyThumbnail ? (
-          <Carousel.Slide className="pkmImgBox">
-            <img src={shinyThumbnail} className="pkmImg" />
+          <Carousel.Slide className={carouselStyles.pkmImgBox}>
+            <img src={shinyThumbnail} className={carouselStyles.pkmImg} />
             <div>Shiny</div>
           </Carousel.Slide>
         ) : null}

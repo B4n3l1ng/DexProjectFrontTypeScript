@@ -1,0 +1,13 @@
+.moveIcon {
+  width: 4em;
+}
+table td {
+  background-color: #39a2db;
+  text-align: center;
+}
+
+table thead tr th {
+  background-color: #008080;
+  color: aliceblue;
+  text-align: center;
+}
