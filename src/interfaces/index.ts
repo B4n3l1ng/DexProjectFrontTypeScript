@@ -57,6 +57,7 @@ interface ItemProperties {
   name: string;
   effect: string;
   _id: string;
+  image: null | string;
 }
 
 export type { PokemonProperties, AbilityProperties, MoveProperties, ItemProperties };

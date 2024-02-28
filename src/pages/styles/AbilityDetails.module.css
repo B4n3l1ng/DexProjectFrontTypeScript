@@ -4,6 +4,10 @@
   width: 58%;
   padding: 3rem;
   margin-bottom: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3em;
 }
 
 section {

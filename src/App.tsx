@@ -10,6 +10,7 @@ import AbilitiesPage from './pages/AbilitiesPage';
 import ScrollToTop from './components/ScrollToTop';
 import AbilityDetails from './pages/AbilityDetails';
 import ItemsPage from './pages/ItemsPage';
+import ItemDetails from './pages/ItemDetails';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/abilities" element={<AbilitiesPage />} />
         <Route path="/ability/:abilityId" element={<AbilityDetails />} />
         <Route path="/items" element={<ItemsPage />} />
+        <Route path="/items/:itemId" element={<ItemDetails />} />
       </Routes>
     </>
   );
