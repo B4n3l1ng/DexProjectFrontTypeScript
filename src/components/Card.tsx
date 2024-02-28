@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import { PokemonProperties, AbilityProperties } from '../interfaces/index';
+import { PokemonProperties, AbilityProperties, ItemProperties } from '../interfaces/index';
 interface props {
-  data: PokemonProperties | AbilityProperties;
+  data: PokemonProperties | AbilityProperties | ItemProperties;
   type: string;
 }
 import cardStyles from './styles/Card.module.css';

@@ -17,7 +17,7 @@ const AbilityDetails = () => {
     const fetchAbility = async () => {
       try {
         const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/abilities/${abilityId}`);
-        if (response.status === (200 || 304)) {
+        if (response.status === 200 || response.status === 304) {
           setAbility(response.data);
         }
       } catch (error) {
@@ -28,7 +28,7 @@ const AbilityDetails = () => {
     const fetchPokemonWithAbility = async () => {
       try {
         const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/abilities/${abilityId}/pokemon`);
-        if (response.status === (200 || 304)) {
+        if (response.status === 200 || response.status === 304) {
           setPokemon(response.data);
         }
       } catch (error) {

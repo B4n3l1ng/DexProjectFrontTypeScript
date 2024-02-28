@@ -8,5 +8,14 @@
 }
 
 .homePage div ul {
+  margin-top: 1em;
   list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9em;
+}
+
+.homePage div ul li {
+  width: 20%;
+  margin: 0 auto;
 }

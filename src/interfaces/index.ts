@@ -53,4 +53,10 @@ interface MoveProperties {
   _id: string;
 }
 
-export type { PokemonProperties, AbilityProperties, MoveProperties };
+interface ItemProperties {
+  name: string;
+  effect: string;
+  _id: string;
+}
+
+export type { PokemonProperties, AbilityProperties, MoveProperties, ItemProperties };

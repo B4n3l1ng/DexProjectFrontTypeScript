@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import homeStyles from './styles/Homepage.module.css';
+import { Button } from '@mantine/core';
 
 const Homepage = () => {
   return (
@@ -9,12 +10,31 @@ const Homepage = () => {
         <h2>Here you can learn about all things competitive Pokémon, from Pokémon moves, to their abilities and items.</h2>
         <ul>
           <li>
-            <Link to="/pokedex">Browse Pokémon information</Link>
+            <Button variant="filled" color="#008080" component={Link} to="/pokedex" fullWidth>
+              Browse Pokémon information
+            </Button>
           </li>
-          <li>Browse Ability information</li>
-          <li>Browse item information</li>
-          <li>Sign Up</li>
-          <li>Already registered? Login here!</li>
+          <li>
+            <Button variant="filled" color="#008080" component={Link} to="/abilities" fullWidth>
+              Browse Ability information
+            </Button>
+          </li>
+          <li>
+            <Button variant="filled" color="#008080" component={Link} to="/items" fullWidth>
+              Browse item information
+            </Button>
+          </li>
+          <li>
+            {' '}
+            <Button variant="filled" color="#008080" component={Link} to="/signup" fullWidth>
+              Sign Up
+            </Button>
+          </li>
+          <li>
+            <Button variant="filled" color="#008080" component={Link} to="/login" fullWidth>
+              Already registered? Login here!
+            </Button>
+          </li>
         </ul>
       </div>
     </section>
