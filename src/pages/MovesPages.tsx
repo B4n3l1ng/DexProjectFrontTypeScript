@@ -1,16 +1,17 @@
-import { Input, Loader, Pagination } from '@mantine/core';
+import { Button, Input, Loader, Pagination } from '@mantine/core';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { MoveProperties } from '../interfaces';
 import Card from '../components/Card';
 import movesStyles from './styles/MovesPage.module.css';
+import TypeSearch from '../components/TypeSearch';
 
 const MovesPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [moves, setMoves] = useState<MoveProperties[]>([]);
   const [filter, setFilter] = useState<string>('');
   const [isFiltering, setIsFiltering] = useState(false);
-
+  const [showFilters, setShowFilters] = useState(false);
   const [display, setDisplay] = useState<MoveProperties[]>([]);
 
   const [activePage, setActivePage] = useState(1);
@@ -60,6 +61,21 @@ const MovesPage = () => {
     filterByName(event.currentTarget!.value);
   };
 
+  const filterByType = (type: string) => {
+    const copy = JSON.parse(JSON.stringify(moves));
+    console.log(copy[0]);
+    const filtered = copy.filter((pokemon: MoveProperties) => pokemon.typing.toLowerCase() === type.toLowerCase());
+    setIsFiltering(true);
+    setDisplay(filtered);
+  };
+  const removeFilters = () => {
+    setIsFiltering(false);
+    setFilter('');
+    const copy = JSON.parse(JSON.stringify(moves));
+    const newData = copy.slice((activePage - 1) * 50, activePage * 50);
+    setDisplay(newData);
+  };
+
   return (
     <section className={movesStyles.movesPage}>
       <h1>All Moves</h1>
@@ -67,7 +83,15 @@ const MovesPage = () => {
         <Loader color="teal" size="lg" type="dots" className="loader" />
       ) : (
         <>
-          <Input variant="filled" size="md" type="text" placeholder="Filter by item name" value={filter} onChange={handleSearch} />
+          <Button variant="outline" onClick={() => setShowFilters(!showFilters)} color="#008080">
+            {showFilters ? 'Hide' : 'Show'} Filters
+          </Button>
+          {showFilters ? (
+            <>
+              <TypeSearch filterByType={filterByType} removeFilters={removeFilters} />
+              <Input variant="filled" size="md" type="text" placeholder="Filter by item name" value={filter} onChange={handleSearch} />
+            </>
+          ) : null}
           {!isFiltering ? (
             <Pagination
               total={Math.ceil(moves.length / 50)}

@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Pagination, Loader, Input } from '@mantine/core';
+import { Pagination, Loader, Input, Button } from '@mantine/core';
 import { PokemonProperties } from '../interfaces/index';
 import Card from '../components/Card';
 import dexStyles from './styles/Pokedex.module.css';
+import TypeSearch from '../components/TypeSearch';
 
 const Pokedex = () => {
   const [allPokemon, setAllPokemon] = useState<PokemonProperties[]>([]);
@@ -12,6 +13,7 @@ const Pokedex = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isFiltering, setIsFiltering] = useState(false);
   const [filter, setFilter] = useState<string>('');
+  const [showFilters, setShowFilters] = useState(false);
 
   const fetchAll = async () => {
     try {
@@ -52,6 +54,21 @@ const Pokedex = () => {
     }
   };
 
+  const filterByType = (type: string) => {
+    const copy = JSON.parse(JSON.stringify(allPokemon));
+    const filtered = copy.filter((pokemon: PokemonProperties) => pokemon.type.includes(type));
+    setIsFiltering(true);
+    setDisplay(filtered);
+  };
+
+  const removeFilters = () => {
+    setIsFiltering(false);
+    setFilter('');
+    const copy = JSON.parse(JSON.stringify(allPokemon));
+    const newData = copy.slice((activePage - 1) * 50, activePage * 50);
+    setDisplay(newData);
+  };
+
   const handleSearch = (event: React.FormEvent<HTMLInputElement>) => {
     event.preventDefault();
     setFilter(event.currentTarget!.value);
@@ -65,7 +82,15 @@ const Pokedex = () => {
         <Loader color="teal" size="lg" type="dots" className="loader" />
       ) : (
         <>
-          <Input variant="filled" size="md" type="text" placeholder="Filter by pokemon name" value={filter} onChange={handleSearch} />
+          <Button variant="outline" onClick={() => setShowFilters(!showFilters)} color="#008080">
+            {showFilters ? 'Hide' : 'Show'} Filters
+          </Button>
+          {showFilters ? (
+            <>
+              <TypeSearch filterByType={filterByType} removeFilters={removeFilters} />
+              <Input variant="filled" size="md" type="text" placeholder="Filter by pokemon name" value={filter} onChange={handleSearch} />{' '}
+            </>
+          ) : null}
           {!isFiltering ? (
             <Pagination
               total={Math.ceil(allPokemon.length / 50)}
