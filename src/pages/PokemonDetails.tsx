@@ -10,6 +10,7 @@ import BaseStats from '../components/BaseStats';
 import PokemonNavButton from '../components/PokemonNavButton';
 import Tabs from '../components/Tabs';
 import dexDetailsStyles from './styles/PokemonDetails.module.css';
+import BackButton from '../components/BackButton';
 
 const PokemonDetails = () => {
   const [data, setData] = useState<PokemonProperties>();
@@ -43,6 +44,8 @@ const PokemonDetails = () => {
           <div className={dexDetailsStyles.navButtonSection}>
             {previous ? <PokemonNavButton id={previous} text={'Previous Pokemon'} /> : null}
             {next ? <PokemonNavButton id={next} text={'Next Pokemon'} /> : null}
+
+            <BackButton page={'pokedex'} />
           </div>
           <h2 className={dexDetailsStyles.pkmName} style={{ color: setTypeColor(data.type[0]) }}>
             {data.name}

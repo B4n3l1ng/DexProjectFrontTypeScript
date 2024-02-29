@@ -6,6 +6,7 @@ import { Loader } from '@mantine/core';
 import Card from '../components/Card';
 import dexStyles from './styles/Pokedex.module.css';
 import detailStyles from './styles/AbilityDetails.module.css';
+import BackButton from '../components/BackButton';
 
 const AbilityDetails = () => {
   const { abilityId } = useParams();
@@ -44,17 +45,20 @@ const AbilityDetails = () => {
       <h1>Ability Details</h1>
 
       {ability && pokemon ? (
-        <div className={dexStyles.dexPage}>
-          <h2 className={detailStyles.name}>{ability.name}</h2>
-          <div className={detailStyles.box}>
-            <p>Description: {ability.description}</p>
+        <>
+          <div className={dexStyles.dexPage} style={{ marginBottom: '1em' }}>
+            <div className={detailStyles.box}>
+              <h2 className={detailStyles.name}>{ability.name}</h2>
+              <p>Description: {ability.description}</p>
+            </div>
+            <div className={dexStyles.list}>
+              {pokemon!.map((pokemon) => (
+                <Card data={pokemon} type={'pokemon'} key={pokemon._id} />
+              ))}
+            </div>
           </div>
-          <div className={dexStyles.list}>
-            {pokemon!.map((pokemon) => (
-              <Card data={pokemon} type={'pokemon'} key={pokemon._id} />
-            ))}
-          </div>
-        </div>
+          <BackButton page={'abilities'} />
+        </>
       ) : (
         <Loader color="teal" size="lg" type="dots" className="loader" />
       )}

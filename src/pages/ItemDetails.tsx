@@ -5,6 +5,7 @@ import axios from 'axios';
 import { Loader } from '@mantine/core';
 import dexStyles from './styles/Pokedex.module.css';
 import detailStyles from './styles/AbilityDetails.module.css';
+import BackButton from '../components/BackButton';
 const ItemDetails = () => {
   const { itemId } = useParams();
   const [isLoading, setIsLoading] = useState(true);
@@ -31,13 +32,16 @@ const ItemDetails = () => {
       {isLoading ? (
         <Loader color="teal" size="lg" type="dots" className="loader" />
       ) : (
-        <div className={dexStyles.dexPage}>
-          <h1 className={detailStyles.name}>{item!.name}</h1>
-          <div className={detailStyles.box} style={{ width: '35%', fontWeight: 600 }}>
-            {item!.image ? <img src={item!.image} alt={item!.name} style={{ width: '5em' }} /> : null}
-            <p>Effect: {item!.effect}</p>
+        <>
+          <div className={dexStyles.dexPage}>
+            <div className={detailStyles.box} style={{ width: '35%', fontWeight: 600 }}>
+              <h1 className={detailStyles.name}>{item!.name}</h1>
+              {item!.image ? <img src={item!.image} alt={item!.name} style={{ width: '5em' }} /> : null}
+              <p>Effect: {item!.effect}</p>
+            </div>
           </div>
-        </div>
+          <BackButton page={'items'} />
+        </>
       )}
     </section>
   );
