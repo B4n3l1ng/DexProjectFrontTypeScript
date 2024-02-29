@@ -25,6 +25,11 @@ const Homepage = () => {
             </Button>
           </li>
           <li>
+            <Button variant="filled" color="#008080" component={Link} to="/moves" fullWidth>
+              Browse move information
+            </Button>
+          </li>
+          <li>
             {' '}
             <Button variant="filled" color="#008080" component={Link} to="/signup" fullWidth>
               Sign Up
