@@ -124,3 +124,19 @@ button a {
 .loader {
   margin: 0 auto;
 }
+
+.pagination {
+  padding: 1em 0;
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.pagination:first-of-type {
+  border-bottom: 5px solid teal;
+}
+
+.pagination:last-of-type {
+  border-top: 5px solid teal;
+}

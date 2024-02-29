@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Pagination, Loader } from '@mantine/core';
+import { Pagination, Loader, Input } from '@mantine/core';
 import { PokemonProperties } from '../interfaces/index';
 import Card from '../components/Card';
 import dexStyles from './styles/Pokedex.module.css';
@@ -10,6 +10,8 @@ const Pokedex = () => {
   const [activePage, setActivePage] = useState(1);
   const [display, setDisplay] = useState<PokemonProperties[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isFiltering, setIsFiltering] = useState(false);
+  const [filter, setFilter] = useState<string>('');
 
   const fetchAll = async () => {
     try {
@@ -36,6 +38,26 @@ const Pokedex = () => {
     }
   }, [activePage, allPokemon]);
 
+  const filterByName = (name: string) => {
+    if (name.length > 0) {
+      const copy = JSON.parse(JSON.stringify(allPokemon));
+      const filtered = copy.filter((pokemon: PokemonProperties) => pokemon.name.toLowerCase().includes(name.toLowerCase()));
+      setIsFiltering(true);
+      setDisplay(filtered);
+    } else {
+      setIsFiltering(false);
+      const copy = JSON.parse(JSON.stringify(allPokemon));
+      const newData = copy.slice((activePage - 1) * 50, activePage * 50);
+      setDisplay(newData);
+    }
+  };
+
+  const handleSearch = (event: React.FormEvent<HTMLInputElement>) => {
+    event.preventDefault();
+    setFilter(event.currentTarget!.value);
+    filterByName(event.currentTarget!.value);
+  };
+
   return (
     <section className={dexStyles.dexPage}>
       <h1>List of all Pokémon</h1>
@@ -43,37 +65,42 @@ const Pokedex = () => {
         <Loader color="teal" size="lg" type="dots" className="loader" />
       ) : (
         <>
-          <Pagination
-            total={Math.ceil(allPokemon.length / 50)}
-            value={activePage}
-            onChange={(page) => {
-              setIsLoading(true);
-              setActivePage(page);
-            }}
-            mt="sm"
-            size="lg"
-            radius="lg"
-            color="teal"
-            className={dexStyles.pagination}
-          />
+          <Input variant="filled" size="md" type="text" placeholder="Filter by pokemon name" value={filter} onChange={handleSearch} />
+          {!isFiltering ? (
+            <Pagination
+              total={Math.ceil(allPokemon.length / 50)}
+              value={activePage}
+              onChange={(page) => {
+                setIsLoading(true);
+                setActivePage(page);
+              }}
+              mt="sm"
+              size="lg"
+              radius="lg"
+              color="teal"
+              className="pagination"
+            />
+          ) : null}
           <div className={dexStyles.list}>
             {display.map((pokemon) => (
               <Card data={pokemon} type="pokemon" key={pokemon._id} />
             ))}
           </div>
-          <Pagination
-            total={Math.ceil(allPokemon.length / 50)}
-            value={activePage}
-            onChange={(page) => {
-              setIsLoading(true);
-              setActivePage(page);
-            }}
-            mt="sm"
-            color="teal"
-            size="lg"
-            radius="lg"
-            className={dexStyles.pagination}
-          />
+          {!isFiltering ? (
+            <Pagination
+              total={Math.ceil(allPokemon.length / 50)}
+              value={activePage}
+              onChange={(page) => {
+                setIsLoading(true);
+                setActivePage(page);
+              }}
+              mt="sm"
+              color="teal"
+              size="lg"
+              radius="lg"
+              className="pagination"
+            />
+          ) : null}
         </>
       )}
     </section>
